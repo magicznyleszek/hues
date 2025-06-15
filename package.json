@@ -11,32 +11,51 @@
   "repository": "https://github.com/magicznyleszek/hues.git",
   "bugs": "https://github.com/magicznyleszek/hues/issues",
   "license": "EUPL-1.2",
+  "browserslist": [
+    "defaults and fully supports es6-module",
+    "maintained node versions",
+    "last 5 major versions",
+    "not dead"
+  ],
+  "type": "module",
+  "app": "public/index.html",
+  "targets": {
+    "app": {
+      "source": [
+        "source/index.html"
+      ],
+      "publicUrl": "./",
+      "distDir": "public",
+      "sourceMap": true,
+      "includeNodeModules": true
+    }
+  },
   "scripts": {
+    "assets:watch": "parcel watch",
+    "assets:build": "parcel build",
     "test": "jest && npm run test-syntax",
-    "test-syntax": "prettier --check source",
     "test-watch": "jest --watchAll",
-    "start": "parcel -p 2038 source/index.html -d dev",
-    "build-app": "rm -rf public && parcel build source/index.html -d public --public-url ./ --no-cache && npm run copy-static-files",
+    "start": "parcel serve --port 2038",
+    "build-app": "rm -rf public && parcel build source/index.html --out-dir public --public-url ./ --no-cache && npm run copy-static-files",
     "copy-static-files": "cp humans.txt LICENSE manifest.json robots.txt sitemap.xml source/favicons/hues-logo.svg public"
   },
   "devDependencies": {
-    "@types/jest": "^25.2.2",
-    "@vue/component-compiler-utils": "^3.0.0",
-    "jest": "^26.0.1",
-    "parcel-bundler": "^1.12.4",
-    "postcss": "^7.0.18",
-    "postcss-import": "^12.0.1",
-    "postcss-preset-env": "^6.7.0",
-    "prettier": "^2.0.5",
-    "stylelint": "^11.0.0",
-    "ts-jest": "^26.0.0",
-    "typescript": "^3.9.2",
-    "vue-hot-reload-api": "^2.3.4",
-    "vue-template-compiler": "^2.6.10"
+    "@parcel/transformer-postcss": "^2.15.2",
+    "@parcel/transformer-vue": "^2.15.2",
+    "@types/jest": "^29.5.14",
+    "jest": "^30.0.0",
+    "parcel": "^2.15.2",
+    "postcss": "^8.5.5",
+    "postcss-import": "^16.1.0",
+    "postcss-preset-env": "^10.2.3",
+    "stylelint": "^16.20.0",
+    "ts-jest": "^29.4.0",
+    "typescript": "^5.8.3",
+    "vue-hot-reload-api": "^2.3.4"
   },
   "dependencies": {
-    "vue": "^2.6.10",
-    "vuex": "^3.1.1"
+    "pinia": "^3.0.3",
+    "vue": "^3.5.16"
   },
   "jest": {
     "collectCoverage": true,

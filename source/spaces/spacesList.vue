@@ -8,12 +8,12 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import spaceForm from "./spaceForm.vue";
-export default Vue.extend({
-  name: "spacesList",
+import {defineComponent} from 'vue'
+import SpaceForm from "./SpaceForm.vue";
+export default defineComponent({
+  name: "SpacesList",
   components: {
-    spaceForm,
+    SpaceForm,
   },
 });
 </script>

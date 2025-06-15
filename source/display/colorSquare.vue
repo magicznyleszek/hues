@@ -3,10 +3,10 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import formatter from "/colors/formatter";
-export default Vue.extend({
-  name: "colorSquare",
+import {defineComponent} from 'vue'
+import formatter from "../colors/formatter";
+export default defineComponent({
+  name: "ColorSquare",
   props: {
     color: {
       type: Array,

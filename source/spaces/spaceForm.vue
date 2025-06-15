@@ -15,15 +15,17 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import spacePart from "./spacePart.vue";
+import {defineComponent} from 'vue'
+import SpacePart from "./SpacePart.vue";
 import { spaces } from "./spacesConfig";
 import formatter from "../colors/formatter";
 import clipboardier from "../misc/clipboardier";
-export default Vue.extend({
-  name: "spaceForm",
+import { useHuesStore } from '../store/huesStore'
+
+export default defineComponent({
+  name: "SpaceForm",
   components: {
-    spacePart,
+    SpacePart,
   },
   props: {
     space: {
@@ -39,7 +41,8 @@ export default Vue.extend({
   methods: {
     onCopyClick(evt): void {
       evt.preventDefault();
-      const colorValue = this.$store.getters.getColorInSpace(this.space);
+      const store = useHuesStore()
+      const colorValue = store.getColorInSpace(this.space);
       clipboardier.copyToClipboard(formatter.formatColor(colorValue));
     },
   },

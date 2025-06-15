@@ -31,33 +31,40 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import colorSquare from "./colorSquare.vue";
+import {defineComponent} from 'vue'
+import ColorSquare from "./ColorSquare.vue";
 import formatter from "../colors/formatter";
 import clipboardier from "../misc/clipboardier";
-export default Vue.extend({
-  name: "currentColor",
+import { useHuesStore } from '../store/huesStore'
+export default defineComponent({
+  name: "CurrentColor",
   components: {
-    colorSquare
+    ColorSquare
   },
   computed: {
     primaryHueColor() {
-      return this.$store.state.primaryHue.color;
+      const store = useHuesStore()
+      return store.primaryHue.color;
     },
     primaryHueName() {
-      return this.$store.state.primaryHue.name;
+      const store = useHuesStore()
+      return store.primaryHue.name;
     },
     currentColor() {
-      return this.$store.getters.getColorInSpace("hsl");
+      const store = useHuesStore()
+      return store.getColorInSpace("hsl");
     },
     matchedColor() {
-      return this.$store.state.match.color;
-    }
+      const store = useHuesStore()
+      return store.match.color;
+    },
     matchedName() {
-      return this.$store.state.match.name;
-    }
+      const store = useHuesStore()
+      return store.match.name;
+    },
     matchedDifference() {
-      return this.$store.state.match.difference;
+      const store = useHuesStore()
+      return store.match.difference;
     }
   },
   methods: {

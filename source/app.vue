@@ -14,16 +14,16 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import pasteBox from "./display/pasteBox.vue";
-import spacesList from "./spaces/spacesList.vue";
-import currentColor from "./display/currentColor.vue";
-export default Vue.extend({
+import {defineComponent} from 'vue'
+import PasteBox from "./display/PasteBox.vue";
+import SpacesList from "./spaces/SpacesList.vue";
+import CurrentColor from "./display/CurrentColor.vue";
+export default defineComponent({
   name: "app",
   components: {
-    pasteBox,
-    spacesList,
-    currentColor,
+    PasteBox,
+    SpacesList,
+    CurrentColor,
   },
 });
 </script>

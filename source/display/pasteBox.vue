@@ -13,15 +13,17 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import {defineComponent} from 'vue'
 import identifier from "../colors/identifier";
-export default Vue.extend({
-  name: "pasteBox",
+import { useHuesStore } from '../store/huesStore'
+export default defineComponent({
+  name: "PasteBox",
   methods: {
     identifyValue(value): void {
+      const store = useHuesStore()
       const identified = identifier.identify(value);
       if (identified !== null) {
-        this.$store.commit("setColor", { color: identified });
+        store.setColor({ color: identified });
       }
     },
     onInput(evt): void {

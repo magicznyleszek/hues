@@ -9,10 +9,11 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import {defineComponent} from 'vue'
 import converter from "../colors/converter";
-export default Vue.extend({
-  name: "spacePart",
+import { useHuesStore } from '../store/huesStore'
+export default defineComponent({
+  name: "SpacePart",
   props: {
     partIndex: {
       type: Number,
@@ -33,7 +34,8 @@ export default Vue.extend({
   },
   computed: {
     partValue() {
-      const color = this.$store.getters.getColorInSpace(this.space);
+      const store = useHuesStore()
+      const color = store.getColorInSpace(this.space);
       return color[this.partIndex + 1];
     },
     widthStyle() {
@@ -68,6 +70,8 @@ export default Vue.extend({
       }
     },
     setValueWithChange(newValue: TColorValuePart, change: number = 0): void {
+      const store = useHuesStore()
+
       let finalValue = newValue || "0";
       if (this.partType === "hexadecimal") {
         finalValue = converter.hexToInt(finalValue);
@@ -87,12 +91,12 @@ export default Vue.extend({
       }
 
       // update store color
-      const color = this.$store.getters.getColorInSpace(this.space);
+      const color = store.getColorInSpace(this.space);
       if (this.partType === "integer") {
         finalValue = Number(finalValue);
       }
       color[this.partIndex + 1] = finalValue;
-      this.$store.commit("setColor", { color: color });
+      store.setColor({ color: color });
     },
   },
 });
