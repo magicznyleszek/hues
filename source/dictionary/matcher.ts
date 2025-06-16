@@ -1,6 +1,6 @@
 import * as dictionaryJsonData from './dictionary.json'
-const dictionary: IDictionary = dictionaryJsonData as any
-import converter from '../colors/converter'
+const dictionary = dictionaryJsonData as unknown as IDictionary
+import converter from '../colors/converter.ts'
 
 class ColorMatcher {
   public matchColor(color: IColorValue): IColorMatch {

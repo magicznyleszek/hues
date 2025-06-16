@@ -89,15 +89,19 @@ export default defineComponent({
   flex-wrap: wrap;
   width: 100%;
 }
+
 .current {
   width: 100%;
 }
+
 .matched {
   flex: 1;
 }
+
 .hue {
   text-align: center;
 }
+
 .distance {
   color: var(--c-shady-lady);
 }

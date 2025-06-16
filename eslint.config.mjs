@@ -58,6 +58,7 @@ export default typescriptEslint.config(
       '@stylistic/quote-props': [1, 'as-needed'],
       'prefer-const': 1,
       'no-var': 1,
+      'no-useless-escape': [1, { allowRegexCharacters: ['-'] }],
     },
   }
 )

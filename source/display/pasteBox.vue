@@ -53,9 +53,11 @@ input {
   width: 100%;
   color: var(--c-shady-lady);
 }
+
 input:not(:placeholder-shown) {
   font-style: italic;
 }
+
 input:focus {
   color: var(--c-shark);
 }

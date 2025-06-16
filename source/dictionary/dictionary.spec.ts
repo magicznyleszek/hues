@@ -1,5 +1,5 @@
 import * as dictionaryJsonData from './dictionary.json'
-const dictionary: IDictionary = dictionaryJsonData as any
+const dictionary = dictionaryJsonData as unknown as IDictionary
 
 describe('dictionary', () => {
   it('shouldn\'t contain duplicated color values', () => {

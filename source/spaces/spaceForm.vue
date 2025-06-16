@@ -1,6 +1,9 @@
 <template lang="html">
   <form>
-    <div v-for="(part, index) in parts">
+    <div
+      v-for="(part, index) in parts"
+      :key="index"
+    >
       <span v-if="part.before">{{ part.before }}</span>
       <space-part
         :part-index="index"
@@ -60,6 +63,7 @@ div {
   display: flex;
   flex-direction: row;
 }
+
 button {
   margin-left: 0.25rem;
 }

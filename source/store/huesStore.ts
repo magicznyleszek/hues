@@ -3,7 +3,7 @@ import * as packageJsonData from '../../package.json'
 import converter from '../colors/converter.ts'
 import identifier from '../colors/identifier.ts'
 import matcher from '../dictionary/matcher.ts'
-const version = (packageJsonData as any).version
+const version = (packageJsonData as unknown as { version: string }).version
 
 interface State {
   color: IColorValue
@@ -42,7 +42,7 @@ export const useHuesStore = defineStore('huesStore', {
     setColor(payload: SetColorPayload) {
       const primaryHue = matcher.matchHue(payload.color)
       const match = matcher.matchColor(payload.color)
-      this.color = Array.from(payload.color) as IColorValue
+      this.color = payload.color
       this.match = match
       this.primaryHue = primaryHue
     },
