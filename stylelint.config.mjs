@@ -4,7 +4,7 @@ export default {
   ],
   extends: [
     '@stylistic/stylelint-config',
-    'stylelint-config-recommended-vue'
+    'stylelint-config-recommended-vue',
   ],
   defaultSeverity: 'warning',
   plugins: ['@stylistic/stylelint-plugin'],
@@ -131,6 +131,6 @@ export default {
         severity: 'warning',
       },
     ],
-    'function-calc-no-unspaced-operator': [true, { severity: 'warning' }]
+    'function-calc-no-unspaced-operator': [true, { severity: 'warning' }],
   },
 }

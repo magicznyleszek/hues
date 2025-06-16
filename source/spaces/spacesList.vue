@@ -1,21 +1,21 @@
 <template lang="html">
   <div>
-    <space-form space="rgb"></space-form>
-    <space-form space="hex"></space-form>
-    <space-form space="hsl"></space-form>
-    <space-form space="hwb"></space-form>
+    <space-form space="rgb" />
+    <space-form space="hex" />
+    <space-form space="hsl" />
+    <space-form space="hwb" />
   </div>
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue'
-import SpaceForm from "./SpaceForm.vue";
+import { defineComponent } from 'vue'
+import SpaceForm from './SpaceForm.vue'
 export default defineComponent({
-  name: "SpacesList",
+  name: 'SpacesList',
   components: {
     SpaceForm,
   },
-});
+})
 </script>
 
 <style lang="css" scoped>

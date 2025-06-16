@@ -3,27 +3,32 @@
     <div v-for="(part, index) in parts">
       <span v-if="part.before">{{ part.before }}</span>
       <space-part
-        v-bind:partIndex="index"
-        v-bind:partType="part.partType"
-        v-bind:range="part.range"
-        v-bind:space="space"
-      ></space-part>
+        :part-index="index"
+        :part-type="part.partType"
+        :range="part.range"
+        :space="space"
+      />
       <span v-if="part.after">{{ part.after }}</span>
     </div>
-    <button @click="onCopyClick" title="copy to clipboard">&darr;</button>
+    <button
+      title="copy to clipboard"
+      @click="onCopyClick"
+    >
+      &darr;
+    </button>
   </form>
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue'
-import SpacePart from "./SpacePart.vue";
-import { spaces } from "./spacesConfig";
-import formatter from "../colors/formatter";
-import clipboardier from "../misc/clipboardier";
+import { defineComponent } from 'vue'
+import SpacePart from './SpacePart.vue'
+import { spaces } from './spacesConfig'
+import formatter from '../colors/formatter'
+import clipboardier from '../misc/clipboardier'
 import { useHuesStore } from '../store/huesStore'
 
 export default defineComponent({
-  name: "SpaceForm",
+  name: 'SpaceForm',
   components: {
     SpacePart,
   },
@@ -36,17 +41,17 @@ export default defineComponent({
   data: function () {
     return {
       parts: spaces.get(this.space).parts,
-    };
+    }
   },
   methods: {
     onCopyClick(evt): void {
-      evt.preventDefault();
+      evt.preventDefault()
       const store = useHuesStore()
-      const colorValue = store.getColorInSpace(this.space);
-      clipboardier.copyToClipboard(formatter.formatColor(colorValue));
+      const colorValue = store.getColorInSpace(this.space)
+      clipboardier.copyToClipboard(formatter.formatColor(colorValue))
     },
   },
-});
+})
 </script>
 
 <style lang="css" scoped>

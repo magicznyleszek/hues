@@ -2,78 +2,84 @@
   <div class="wrapper">
     <div class="current">
       <color-square
-        v-bind:color="currentColor"
+        :color="currentColor"
         title="current color"
-      ></color-square>
+      />
     </div>
 
     <div class="matched">
       <color-square
-        v-bind:color="matchedColor"
+        :color="matchedColor"
         title="closest match"
-      ></color-square>
-      <span class="distance" title="difference/distance"
-        >&larr;&rarr; {{ matchedDifference }}</span
-      >
+      />
+      <span
+        class="distance"
+        title="difference/distance"
+      >&larr;&rarr; {{ matchedDifference }}</span>
       <label>{{ matchedName }}</label>
-      <button @click="onCopyClick" title="copy as CSS variable">&darr;</button>
+      <button
+        title="copy as CSS variable"
+        @click="onCopyClick"
+      >
+        &darr;
+      </button>
     </div>
 
     <div class="hue">
       <color-square
         space="hsl"
-        v-bind:color="primaryHueColor"
+        :color="primaryHueColor"
         title="primary hue"
-      ></color-square>
+      />
       <label>{{ primaryHueName }}</label>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue'
-import ColorSquare from "./ColorSquare.vue";
-import formatter from "../colors/formatter";
-import clipboardier from "../misc/clipboardier";
+import { defineComponent } from 'vue'
+import ColorSquare from './ColorSquare.vue'
+import formatter from '../colors/formatter'
+import clipboardier from '../misc/clipboardier'
 import { useHuesStore } from '../store/huesStore'
 export default defineComponent({
-  name: "CurrentColor",
+  name: 'CurrentColor',
   components: {
-    ColorSquare
+    ColorSquare,
   },
   computed: {
     primaryHueColor() {
       const store = useHuesStore()
-      return store.primaryHue.color;
+      return store.primaryHue.color
     },
     primaryHueName() {
       const store = useHuesStore()
-      return store.primaryHue.name;
+      return store.primaryHue.name
     },
     currentColor() {
       const store = useHuesStore()
-      return store.getColorInSpace("hsl");
+      return store.getColorInSpace('hsl')
     },
     matchedColor() {
       const store = useHuesStore()
-      return store.match.color;
+      return store.match.color
     },
     matchedName() {
       const store = useHuesStore()
-      return store.match.name;
+      return store.match.name
     },
     matchedDifference() {
       const store = useHuesStore()
-      return store.match.difference;
-    }
+      return store.match.difference
+    },
   },
   methods: {
     onCopyClick(evt): void {
-      evt.preventDefault();
-      clipboardier.copyToClipboard(formatter.formatVariable(this.matchedName, this.matchedColor));
-    }
-  }
-});
+      evt.preventDefault()
+      clipboardier.copyToClipboard(formatter.formatVariable(this.matchedName, this.matchedColor))
+    },
+  },
+})
 </script>
 
 <style lang="css" scoped>
