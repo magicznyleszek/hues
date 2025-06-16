@@ -305,7 +305,6 @@ class Converter {
     const i = Math.floor(6 * hue);
     const v = 1 - blackness;
     let f = 6 * hue - i;
-    // tslint:disable-next-line:no-bitwise
     if ((i & 0x01) !== 0) {
       f = 1 - f;
     }

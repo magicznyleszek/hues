@@ -1,9 +1,12 @@
 <template lang="html">
-  <figure v-bind:style="bgStyle" v-bind:title="title"></figure>
+  <figure
+    :style="bgStyle"
+    :title="title"
+  />
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue'
+import { defineComponent } from 'vue'
 import formatter from "../colors/formatter";
 export default defineComponent({
   name: "ColorSquare",
@@ -15,15 +18,16 @@ export default defineComponent({
     title: {
       type: String,
       required: false,
+      default: ''
     },
   },
   computed: {
     bgStyle() {
-      const colorString = formatter.formatColor(this.color);
+      const colorString = formatter.formatColor(this.color as IColorValue);
       return `background-color: ${colorString};`;
     },
   },
-});
+})
 </script>
 
 <style lang="css" scoped>

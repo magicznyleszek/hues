@@ -4,7 +4,7 @@ class Clipboardier {
     textField.innerText = text;
     document.body.appendChild(textField);
     textField.select();
-    document.execCommand("copy");
+    document.execCommand('copy');
     textField.remove();
   }
 }
