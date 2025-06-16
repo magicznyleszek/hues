@@ -1,10 +1,9 @@
 <template lang="html">
-  <div>
+  <div class="paste-box">
     <input
       title="paste here"
       type="text"
       placeholder="paste or type here"
-
       @input="onInput"
       @keydown="onKeyDown"
     >
@@ -44,9 +43,15 @@ export default defineComponent({
 </script>
 
 <style lang="css" scoped>
+.paste-box {
+  margin: var(--s-leading-half) 0;
+}
+
 input {
   width: 100%;
   color: var(--c-shady-lady);
+  padding: var(--s-leading-half);
+  box-shadow: inset 0 0 0 1px var(--c-celeste);
 }
 
 input:not(:placeholder-shown) {
@@ -55,5 +60,6 @@ input:not(:placeholder-shown) {
 
 input:focus {
   color: var(--c-shark);
+  background-color: var(--c-celeste);
 }
 </style>

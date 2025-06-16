@@ -12,17 +12,14 @@
         :color="matchedColor"
         title="closest match"
       />
-      <span
-        class="distance"
-        title="difference/distance"
-      >&larr;&rarr; {{ matchedDifference }}</span>
-      <label>{{ matchedName }}</label>
-      <button
-        title="copy as CSS variable"
-        @click="onCopyClick"
-      >
-        &darr;
-      </button>
+      <div class="matched-info">
+        <span
+          class="distance"
+          title="difference/distance"
+        >&larr;&rarr; {{ matchedDifference }}</span>
+
+        <label>{{ matchedName }}</label>
+      </div>
     </div>
 
     <div class="hue">
@@ -33,6 +30,15 @@
       />
       <label>{{ primaryHueName }}</label>
     </div>
+  </div>
+
+  <div class="wrapper">
+    <button
+      title="copy as CSS variable"
+      @click="onCopyClick"
+    >
+      {{ formattedVariable }}
+    </button>
   </div>
 </template>
 
@@ -72,6 +78,9 @@ export default defineComponent({
       const store = useHuesStore()
       return store.match.difference
     },
+    formattedVariable() {
+      return formatter.formatVariable(this.matchedName, this.matchedColor)
+    },
   },
   methods: {
     onCopyClick(evt: MouseEvent): void {
@@ -90,6 +99,10 @@ export default defineComponent({
   width: 100%;
 }
 
+.wrapper + .wrapper {
+  margin-top: var(--s-leading-half);
+}
+
 .current {
   width: 100%;
 }
@@ -104,5 +117,11 @@ export default defineComponent({
 
 .distance {
   color: var(--c-shady-lady);
+}
+
+.matched-info {
+  display: flex;
+  flex-direction: row;
+  gap: var(--s-leading-half);
 }
 </style>
