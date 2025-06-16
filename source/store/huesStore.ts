@@ -1,19 +1,19 @@
 import { defineStore } from 'pinia'
 import * as packageJsonData from '../../package.json'
-import converter from '../colors/converter.ts'
-import identifier from '../colors/identifier.ts'
-import matcher from '../dictionary/matcher.ts'
+import converter from '../colors/converter'
+import identifier from '../colors/identifier'
+import matcher from '../dictionary/matcher'
 const version = (packageJsonData as unknown as { version: string }).version
 
 interface State {
-  color: IColorValue
-  match: IColorMatch
-  primaryHue: IColorMatch
+  color: ColorValue
+  match: ColorMatch
+  primaryHue: ColorMatch
   version: string
 }
 
 interface SetColorPayload {
-  color: IColorValue
+  color: ColorValue
 }
 
 let initialColorValue = converter.getRandomColor('hsl')
@@ -36,7 +36,7 @@ export const useHuesStore = defineStore('huesStore', {
     }
   },
   getters: {
-    getColorInSpace: (state: State) => (space: TSpace) => converter.convertTo(state.color, space),
+    getColorInSpace: (state: State) => (space: Space) => converter.convertTo(state.color, space),
   },
   actions: {
     setColor(payload: SetColorPayload) {

@@ -34,7 +34,7 @@ class Converter {
     ],
   ])
 
-  public getRandomColor(space: TSpace = 'rgb'): IColorValue {
+  public getRandomColor(space: Space = 'rgb'): ColorValue {
     switch (space) {
       case 'hex':
         return this.getRandomHex()
@@ -48,7 +48,7 @@ class Converter {
     }
   }
 
-  public convertTo(color: IColorValue, toSpace: TSpace): IColorValue {
+  public convertTo(color: ColorValue, toSpace: Space): ColorValue {
     if (color[0] !== toSpace) {
       const fromGroup = this.convertMap.get(color[0])
       if (fromGroup instanceof Map) {
@@ -76,11 +76,12 @@ class Converter {
   // helpers
   // ---------------------------------------------------------------------------
 
-  private roundValues(color: IColorValue): IColorValue {
-    const safe: IColorValue = JSON.parse(JSON.stringify(color))
+  private roundValues(color: ColorValue): ColorValue {
+    const safe: ColorValue = JSON.parse(JSON.stringify(color))
     for (let i = 1; i < color.length; i++) {
-      if (typeof color[i] === 'number') {
-        safe[i] = Math.round(color[i])
+      const colorPart = color[i]
+      if (typeof colorPart === 'number') {
+        safe[i] = Math.round(colorPart)
       }
     }
     return safe
@@ -90,19 +91,19 @@ class Converter {
   // generators
   // ---------------------------------------------------------------------------
 
-  private getRandomHex(): IColorValue {
+  private getRandomHex(): ColorValue {
     return this.rgbToHex(this.getRandomRgb())
   }
 
-  private getRandomHsl(): IColorValue {
+  private getRandomHsl(): ColorValue {
     return this.rgbToHsl(this.getRandomRgb())
   }
 
-  private getRandomHwb(): IColorValue {
+  private getRandomHwb(): ColorValue {
     return this.rgbToHwb(this.getRandomRgb())
   }
 
-  private getRandomRgb(): IColorValue {
+  private getRandomRgb(): ColorValue {
     return this.roundValues([
       'rgb',
       Math.random() * 255,
@@ -115,26 +116,26 @@ class Converter {
   // conversion from hex
   // ---------------------------------------------------------------------------
 
-  private hexToRgb(color: IColorValue): IColorValue {
+  private hexToRgb(color: ColorValue): ColorValue {
     const red = this.hexToInt(color[1])
     const green = this.hexToInt(color[2])
     const blue = this.hexToInt(color[3])
     return ['rgb', red, green, blue]
   }
 
-  private hexToHsl(color: IColorValue): IColorValue {
+  private hexToHsl(color: ColorValue): ColorValue {
     return this.roundValues(this.hexToHslFloat(color))
   }
 
-  private hexToHwb(color: IColorValue): IColorValue {
+  private hexToHwb(color: ColorValue): ColorValue {
     return this.roundValues(this.hexToHwbFloat(color))
   }
 
-  private hexToHslFloat(color: IColorValue): IColorValue {
+  private hexToHslFloat(color: ColorValue): ColorValue {
     return this.rgbToHslFloat(this.hexToRgb(color))
   }
 
-  private hexToHwbFloat(color: IColorValue): IColorValue {
+  private hexToHwbFloat(color: ColorValue): ColorValue {
     return this.rgbToHwbFloat(this.hexToRgb(color))
   }
 
@@ -142,22 +143,22 @@ class Converter {
   // conversion from rgb
   // ---------------------------------------------------------------------------
 
-  private rgbToHex(color: IColorValue): IColorValue {
+  private rgbToHex(color: ColorValue): ColorValue {
     const red16 = this.intToHex(color[1])
     const green16 = this.intToHex(color[2])
     const blue16 = this.intToHex(color[3])
     return ['hex', red16, green16, blue16]
   }
 
-  private rgbToHsl(color: IColorValue): IColorValue {
+  private rgbToHsl(color: ColorValue): ColorValue {
     return this.roundValues(this.rgbToHslFloat(color))
   }
 
-  private rgbToHwb(color: IColorValue): IColorValue {
+  private rgbToHwb(color: ColorValue): ColorValue {
     return this.roundValues(this.rgbToHwbFloat(color))
   }
 
-  private rgbToHslFloat(color: IColorValue): IColorValue {
+  private rgbToHslFloat(color: ColorValue): ColorValue {
     const red = Number(color[1]) / 255
     const green = Number(color[2]) / 255
     const blue = Number(color[3]) / 255
@@ -198,7 +199,7 @@ class Converter {
     return ['hsl', hue, saturation * 100, lightness * 100]
   }
 
-  private rgbToHwbFloat(color: IColorValue): IColorValue {
+  private rgbToHwbFloat(color: ColorValue): ColorValue {
     const red = Number(color[1])
     const green = Number(color[2])
     const blue = Number(color[3])
@@ -214,19 +215,19 @@ class Converter {
   // conversion from hsl
   // ---------------------------------------------------------------------------
 
-  private hslToHex(color: IColorValue): IColorValue {
+  private hslToHex(color: ColorValue): ColorValue {
     return this.rgbToHex(this.hslToRgbFloat(color))
   }
 
-  private hslToRgb(color: IColorValue): IColorValue {
+  private hslToRgb(color: ColorValue): ColorValue {
     return this.roundValues(this.hslToRgbFloat(color))
   }
 
-  private hslToHwb(color: IColorValue): IColorValue {
+  private hslToHwb(color: ColorValue): ColorValue {
     return this.roundValues(this.hslToHwbFloat(color))
   }
 
-  private hslToRgbFloat(color: IColorValue): IColorValue {
+  private hslToRgbFloat(color: ColorValue): ColorValue {
     const hue = Number(color[1]) / 360
     const sat = Number(color[2]) / 100
     const lum = Number(color[3]) / 100
@@ -269,7 +270,7 @@ class Converter {
     }
   }
 
-  private hslToHwbFloat(color: IColorValue): IColorValue {
+  private hslToHwbFloat(color: ColorValue): ColorValue {
     return this.rgbToHwbFloat(this.hslToRgbFloat(color))
   }
 
@@ -277,20 +278,20 @@ class Converter {
   // conversion from hwb
   // ---------------------------------------------------------------------------
 
-  private hwbToHex(color: IColorValue): IColorValue {
+  private hwbToHex(color: ColorValue): ColorValue {
     return this.rgbToHex(this.hwbToRgbFloat(color))
   }
 
-  private hwbToRgb(color: IColorValue): IColorValue {
+  private hwbToRgb(color: ColorValue): ColorValue {
     return this.roundValues(this.hwbToRgbFloat(color))
   }
 
-  private hwbToHsl(color: IColorValue): IColorValue {
+  private hwbToHsl(color: ColorValue): ColorValue {
     return this.roundValues(this.hwbToHslFloat(color))
   }
 
   // http://dev.w3.org/csswg/css-color/#hwb-to-rgb
-  private hwbToRgbFloat(color: IColorValue): IColorValue {
+  private hwbToRgbFloat(color: ColorValue): ColorValue {
     const hue = Number(color[1]) / 360
     let whiteness = Number(color[2]) / 100
     let blackness = Number(color[3]) / 100
@@ -354,7 +355,7 @@ class Converter {
     return ['rgb', red * 255, green * 255, blue * 255]
   }
 
-  private hwbToHslFloat(color: IColorValue) {
+  private hwbToHslFloat(color: ColorValue) {
     return this.rgbToHslFloat(this.hwbToRgbFloat(color))
   }
 }

@@ -1,11 +1,11 @@
 import validator from './validator'
 
-interface IValidatorTest {
-  in: IColorValue
+interface ValidatorTest {
+  in: ColorValue
   out: boolean
 }
 
-const testCases: IValidatorTest[] = [
+const testCases: ValidatorTest[] = [
   // proper colors
   { in: ['rgb', 240, 255, 0], out: true },
   { in: ['hex', 'ff', '00', 'aa'], out: true },

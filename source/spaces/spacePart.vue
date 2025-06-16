@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, PropType } from 'vue'
 import converter from '../colors/converter'
 import { useHuesStore } from '../store/huesStore'
 export default defineComponent({
@@ -20,15 +20,15 @@ export default defineComponent({
       required: true,
     },
     partType: {
-      type: String,
+      type: String as PropType<SpacePartType>,
       required: true,
     },
     range: {
-      type: Array,
+      type: Array<number>,
       required: true,
     },
     space: {
-      type: String,
+      type: String as PropType<Space>,
       required: true,
     },
   },
@@ -44,10 +44,11 @@ export default defineComponent({
     },
   },
   methods: {
-    onInput(evt): void {
-      this.setValueWithChange(evt.target.value)
+    onInput(evt: Event): void {
+      const target = evt.target as HTMLInputElement
+      this.setValueWithChange(target.value)
     },
-    onKeyDown(evt) {
+    onKeyDown(evt: KeyboardEvent) {
       switch (evt.key) {
         case 'ArrowUp':
           if (evt.shiftKey) {
@@ -69,14 +70,14 @@ export default defineComponent({
           return
       }
     },
-    setValueWithChange(newValue: TColorValuePart, change: number = 0): void {
+    setValueWithChange(newValue: ColorValuePart, change: number = 0): void {
       const store = useHuesStore()
 
       let finalValue = newValue || '0'
       if (this.partType === 'hexadecimal') {
         finalValue = converter.hexToInt(finalValue)
       } else {
-        finalValue = parseInt(finalValue, 10)
+        finalValue = parseInt(String(finalValue), 10)
       }
 
       finalValue += change

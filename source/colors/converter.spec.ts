@@ -1,37 +1,37 @@
 import converter from './converter'
 import validator from './validator'
 
-type TConverterTestColor = {
-  [K in TSpace]: IColorValue;
+type ConverterTestColor = {
+  [K in Space]: ColorValue;
 }
 
-interface IConverterTest {
-  in: IColorValue
-  out: IColorValue
+interface ConverterTest {
+  in: ColorValue
+  out: ColorValue
 }
 
-const black: TConverterTestColor = {
+const black: ConverterTestColor = {
   hex: ['hex', '00', '00', '00'],
   hsl: ['hsl', 0, 0, 0],
   hwb: ['hwb', 0, 0, 100],
   rgb: ['rgb', 0, 0, 0],
 }
 
-const white: TConverterTestColor = {
+const white: ConverterTestColor = {
   hex: ['hex', 'ff', 'ff', 'ff'],
   hsl: ['hsl', 0, 0, 100],
   hwb: ['hwb', 0, 100, 0],
   rgb: ['rgb', 255, 255, 255],
 }
 
-const gray: TConverterTestColor = {
+const gray: ConverterTestColor = {
   hex: ['hex', '80', '80', '80'],
   hsl: ['hsl', 0, 0, 50],
   hwb: ['hwb', 0, 100, 100],
   rgb: ['rgb', 128, 128, 128],
 }
 
-const testCases: IConverterTest[] = [
+const testCases: ConverterTest[] = [
   { in: ['hex', '00', '7f', 'ff'], out: ['rgb', 0, 127, 255] },
   { in: ['hex', '00', '7f', 'ff'], out: ['hsl', 210, 100, 50] },
   { in: ['hex', '00', '7f', 'ff'], out: ['hwb', 210, 0, 0] },

@@ -3,8 +3,8 @@
   "compilerOptions": {
     "baseUrl": "_assets/scripts",
     "target": "es2020",
-    "module": "node16",
-    "moduleResolution": "node16",
+    "module": "es2020",
+    "moduleResolution": "bundler",
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,

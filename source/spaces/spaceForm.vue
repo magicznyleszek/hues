@@ -23,7 +23,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, PropType } from 'vue'
 import SpacePart from './SpacePart.vue'
 import { spaces } from './spacesConfig'
 import formatter from '../colors/formatter'
@@ -37,17 +37,17 @@ export default defineComponent({
   },
   props: {
     space: {
-      type: String,
+      type: String as PropType<Space>,
       required: true,
     },
   },
   data: function () {
     return {
-      parts: spaces.get(this.space).parts,
+      parts: spaces.get(this.space)?.parts,
     }
   },
   methods: {
-    onCopyClick(evt): void {
+    onCopyClick(evt: MouseEvent): void {
       evt.preventDefault()
       const store = useHuesStore()
       const colorValue = store.getColorInSpace(this.space)

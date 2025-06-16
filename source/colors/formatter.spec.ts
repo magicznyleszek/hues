@@ -1,11 +1,11 @@
 import formatter from './formatter'
 
-interface IFormatterTest {
-  in: IColorValue
+interface FormatterTest {
+  in: ColorValue
   out: string
 }
 
-const testCases: IFormatterTest[] = [
+const testCases: FormatterTest[] = [
   // proper ones
   { in: ['rgb', 240, 255, 0], out: 'rgb(240, 255, 0)' },
   { in: ['hex', 'ff', '00', 'aa'], out: '#ff00aa' },
@@ -23,13 +23,13 @@ describe('formatter.formatColor', () => {
   })
 })
 
-interface IFormatterTest2 {
+interface FormatterTest2 {
   in1: string
-  in2: IColorValue
+  in2: ColorValue
   out: string
 }
 
-const testCases2: IFormatterTest2[] = [
+const testCases2: FormatterTest2[] = [
   { in1: 'Black', in2: ['hsl', 0, 0, 0], out: '--c-black: hsl(0, 0%, 0%);' },
   {
     in1: 'Purple Mountain\'s Majesty',

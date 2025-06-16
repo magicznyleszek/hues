@@ -1,4 +1,4 @@
-export const spaces: Map<TSpace, ISpaceDefinition> = new Map([
+export const spaces: Map<Space, SpaceDefinition> = new Map([
   [
     'hex',
     {

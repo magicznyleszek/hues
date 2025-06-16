@@ -1,7 +1,7 @@
 class Validator {
   private readonly hexRegex = new RegExp('[0-9A-F]{2}', 'i')
 
-  public isValid(color: IColorValue) {
+  public isValid(color: ColorValue) {
     switch (color[0]) {
       case 'hex':
         return this.isHex(color)
@@ -16,7 +16,7 @@ class Validator {
     }
   }
 
-  public isSameColor(first: IColorValue, second: IColorValue): boolean {
+  public isSameColor(first: ColorValue, second: ColorValue): boolean {
     // different length means different array
     if (first.length !== second.length) {
       return false
@@ -35,16 +35,16 @@ class Validator {
     return isSame
   }
 
-  private isHex(hex: IColorValue): boolean {
+  private isHex(hex: ColorValue): boolean {
     let areValuesInRange = true
     let areValuesHex = true
     for (let i = 1; i < hex.length; i++) {
-      if (this.isHexValue(hex[i]) === false) {
+      if (this.isHexValue(String(hex[i])) === false) {
         areValuesHex = false
       }
       if (
         typeof hex[i] === 'string' &&
-        !this.isIntInRange(parseInt(hex[i], 16), 0, 255)
+        !this.isIntInRange(parseInt(String(hex[i]), 16), 0, 255)
       ) {
         areValuesInRange = false
       }
@@ -53,16 +53,16 @@ class Validator {
     return areValuesHex && areValuesInRange
   }
 
-  private isRgb(rgb: IColorValue): boolean {
+  private isRgb(rgb: ColorValue): boolean {
     for (let i = 1; i < rgb.length; i++) {
-      if (typeof rgb[i] === 'number' && !this.isIntInRange(rgb[i], 0, 255)) {
+      if (typeof rgb[i] === 'number' && !this.isIntInRange(parseInt(String(rgb[i])), 0, 255)) {
         return false
       }
     }
     return true
   }
 
-  private isHsl(hsl: IColorValue): boolean {
+  private isHsl(hsl: ColorValue): boolean {
     if (typeof hsl[1] === 'number' && !this.isIntInRange(hsl[1], 0, 360)) {
       return false
     }
@@ -75,7 +75,7 @@ class Validator {
     return true
   }
 
-  private isHwb(hwb: IColorValue): boolean {
+  private isHwb(hwb: ColorValue): boolean {
     if (typeof hwb[1] === 'number' && !this.isIntInRange(hwb[1], 0, 360)) {
       return false
     }

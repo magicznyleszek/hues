@@ -2,8 +2,8 @@ import matcher from '../dictionary/matcher'
 import validator from './validator'
 
 class ColorIdentifier {
-  public identify(text: string): IColorValue | null {
-    const finalColor: IColorValue = ['hsl', -1, -1, -1]
+  public identify(text: string): ColorValue | null {
+    const finalColor: ColorValue = ['hsl', -1, -1, -1]
 
     // cleanup whitespace
     text = text.trim()
@@ -72,7 +72,7 @@ class ColorIdentifier {
     return null
   }
 
-  private applyValues(color: IColorValue, text: string): void {
+  private applyValues(color: ColorValue, text: string): void {
     // remove space prefix and parens opening
     text = text.slice(4)
     // remove parens closing

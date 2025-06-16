@@ -1,11 +1,11 @@
 import matcher from './matcher'
 
-interface IMatcherTest {
-  in: IColorValue
-  out: IColorMatch
+interface MatcherTest {
+  in: ColorValue
+  out: ColorMatch
 }
 
-const testCases: IMatcherTest[] = [
+const testCases: MatcherTest[] = [
   // proper ones
   {
     in: ['rgb', 0, 0, 0],

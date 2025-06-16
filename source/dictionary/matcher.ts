@@ -1,17 +1,17 @@
 import * as dictionaryJsonData from './dictionary.json'
-const dictionary = dictionaryJsonData as unknown as IDictionary
-import converter from '../colors/converter.ts'
+const dictionary = dictionaryJsonData as unknown as Dictionary
+import converter from '../colors/converter'
 
 class ColorMatcher {
-  public matchColor(color: IColorValue): IColorMatch {
+  public matchColor(color: ColorValue): ColorMatch {
     return this.matchDictionaryColor(color, dictionary.colors)
   }
 
-  public matchHue(color: IColorValue): IColorMatch {
+  public matchHue(color: ColorValue): ColorMatch {
     return this.matchDictionaryColor(color, dictionary.primaryHues)
   }
 
-  public findColorByName(name: string): IColor | undefined {
+  public findColorByName(name: string): Color | undefined {
     const lowerName = String(name).toLowerCase()
     const found = dictionary.colors.find(dictionaryColor => String(dictionaryColor[3]).toLowerCase() === lowerName)
     if (found) {
@@ -25,9 +25,9 @@ class ColorMatcher {
   }
 
   private matchDictionaryColor(
-    color: IColorValue,
-    dict: IDictionaryColor[]
-  ): IColorMatch {
+    color: ColorValue,
+    dict: DictionaryColor[]
+  ): ColorMatch {
     const targetRgb = converter.convertTo(color, 'rgb')
     const targetHsl = converter.convertTo(color, 'hsl')
 
@@ -37,8 +37,8 @@ class ColorMatcher {
       name: this.getColorByIndex(0).name,
     }
 
-    dict.forEach((dictColor: IDictionaryColor): void => {
-      const dictHsl: IColorValue = [
+    dict.forEach((dictColor: DictionaryColor): void => {
+      const dictHsl: ColorValue = [
         'hsl',
         dictColor[0],
         dictColor[1],
@@ -60,14 +60,14 @@ class ColorMatcher {
     return match
   }
 
-  private getRgbDifference(target: IColorValue, dict: IColorValue): number {
+  private getRgbDifference(target: ColorValue, dict: ColorValue): number {
     const differenceR = Math.abs(Number(target[1]) - Number(dict[1]))
     const differenceG = Math.abs(Number(target[2]) - Number(dict[2]))
     const differenceB = Math.abs(Number(target[3]) - Number(dict[3]))
     return differenceR + differenceG + differenceB
   }
 
-  private getHslDifference(target: IColorValue, dict: IColorValue): number {
+  private getHslDifference(target: ColorValue, dict: ColorValue): number {
     let differenceH = Math.abs(Number(target[1]) - Number(dict[1]))
     let differenceS = Math.abs(Number(target[2]) - Number(dict[2]))
     const differenceL = Math.abs(Number(target[3]) - Number(dict[3]))
@@ -86,7 +86,7 @@ class ColorMatcher {
     return differenceH + differenceS + differenceL
   }
 
-  private getColorByIndex(index: number): IColor {
+  private getColorByIndex(index: number): Color {
     const dictColor = dictionary.colors[index]
     return {
       color: ['hsl', dictColor[0], dictColor[1], dictColor[2]],

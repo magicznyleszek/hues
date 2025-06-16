@@ -3,7 +3,7 @@ import { spaces } from '../spaces/spacesConfig'
 import validator from './validator'
 
 class ColorFormatter {
-  public formatColor(color: IColorValue): string {
+  public formatColor(color: ColorValue): string {
     let stringValue = ''
 
     if (!validator.isValid(color)) {
@@ -26,7 +26,7 @@ class ColorFormatter {
     return stringValue
   }
 
-  public formatVariable(name: string, color: IColorValue): string {
+  public formatVariable(name: string, color: ColorValue): string {
     return `--c-${slugifier.slugify(name)}: ${this.formatColor(color)};`
   }
 }

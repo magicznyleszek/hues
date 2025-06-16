@@ -74,7 +74,7 @@ export default defineComponent({
     },
   },
   methods: {
-    onCopyClick(evt): void {
+    onCopyClick(evt: MouseEvent): void {
       evt.preventDefault()
       clipboardier.copyToClipboard(formatter.formatVariable(this.matchedName, this.matchedColor))
     },

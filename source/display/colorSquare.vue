@@ -6,13 +6,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, PropType } from 'vue'
 import formatter from '../colors/formatter'
 export default defineComponent({
   name: 'ColorSquare',
   props: {
     color: {
-      type: Array,
+      type: Array as unknown as PropType<ColorValue>,
       required: true,
     },
     title: {
@@ -23,7 +23,7 @@ export default defineComponent({
   },
   computed: {
     bgStyle() {
-      const colorString = formatter.formatColor(this.color as IColorValue)
+      const colorString = formatter.formatColor(this.color)
       return `background-color: ${colorString};`
     },
   },

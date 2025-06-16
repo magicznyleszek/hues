@@ -1,10 +1,10 @@
-type TSpace = 'hex' | 'rgb' | 'hsl' | 'hwb'
+type Space = 'hex' | 'rgb' | 'hsl' | 'hwb'
 
-interface ISpaceDefinition {
-  parts: ISpacePart[]
+interface SpaceDefinition {
+  parts: SpacePart[]
 }
 
-type TSpacePartName =
+type SpacePartName =
   | 'red'
   | 'green'
   | 'blue'
@@ -14,12 +14,12 @@ type TSpacePartName =
   | 'whiteness'
   | 'blackness'
 
-type TSpacePartType = 'hexadecimal' | 'integer'
+type SpacePartType = 'hexadecimal' | 'integer'
 
-interface ISpacePart {
+interface SpacePart {
   after?: string
   before?: string
-  partName: TSpacePartName
-  partType: TSpacePartType
+  partName: SpacePartName
+  partType: SpacePartType
   range: number[]
 }

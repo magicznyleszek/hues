@@ -3,9 +3,8 @@
     <input
       title="paste here"
       type="text"
-      placeholder="…"
-      @blur="onBlur"
-      @focus="onFocus"
+      placeholder="paste or type here"
+
       @input="onInput"
       @keydown="onKeyDown"
     >
@@ -19,26 +18,22 @@ import { useHuesStore } from '../store/huesStore'
 export default defineComponent({
   name: 'PasteBox',
   methods: {
-    identifyValue(value): void {
+    identifyValue(value: string): void {
       const store = useHuesStore()
       const identified = identifier.identify(value)
       if (identified !== null) {
         store.setColor({ color: identified })
       }
     },
-    onInput(evt): void {
-      this.identifyValue(evt.target.value)
+    onInput(evt: Event): void {
+      const target = evt.target as HTMLInputElement
+      this.identifyValue(target.value)
     },
-    onFocus(evt): void {
-      evt.target.setAttribute('placeholder', 'paste or type here')
-    },
-    onBlur(evt): void {
-      evt.target.setAttribute('placeholder', '…')
-    },
-    onKeyDown(evt): void {
+    onKeyDown(evt: KeyboardEvent): void {
+      const target = evt.target as HTMLInputElement
       switch (evt.key) {
         case 'Enter':
-          this.identifyValue(evt.target.value)
+          this.identifyValue(target.value)
           break
         default:
           return
