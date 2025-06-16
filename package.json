@@ -31,6 +31,9 @@
     }
   },
   "scripts": {
+    "lint": "npm run lint:scripts && npm run lint:styles",
+    "lint:scripts": "eslint",
+    "lint:styles": "stylelint source/**/*.{css,vue}",
     "assets:watch": "parcel watch",
     "assets:build": "parcel build",
     "test": "jest && npm run test-syntax",
@@ -42,15 +45,25 @@
   "devDependencies": {
     "@parcel/transformer-postcss": "^2.15.2",
     "@parcel/transformer-vue": "^2.15.2",
+    "@stylistic/eslint-plugin": "^4.4.1",
+    "@stylistic/stylelint-config": "^2.0.0",
     "@types/jest": "^29.5.14",
+    "eslint": "^9.29.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-vue": "^10.2.0",
+    "globals": "^16.2.0",
     "jest": "^30.0.0",
     "parcel": "^2.15.2",
     "postcss": "^8.5.5",
+    "postcss-html": "^1.8.0",
     "postcss-import": "^16.1.0",
     "postcss-preset-env": "^10.2.3",
+    "prettier": "^3.5.3",
     "stylelint": "^16.20.0",
+    "stylelint-config-recommended-vue": "^1.6.0",
     "ts-jest": "^29.4.0",
     "typescript": "^5.8.3",
+    "typescript-eslint": "^8.34.0",
     "vue-hot-reload-api": "^2.3.4"
   },
   "dependencies": {
