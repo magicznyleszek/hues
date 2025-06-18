@@ -10,6 +10,5 @@ npm-debug.log
 Thumbs.db
 
 # Parcel
-.cache
-dev
+.parcel-cache
 public

@@ -1,9 +1,26 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": "_assets/scripts",
+    "target": "es2020",
+    "module": "es2020",
+    "moduleResolution": "bundler",
     "strict": true,
-    "target": "es5",
-    "module": "es2015",
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "allowImportingTsExtensions": true,
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "noUnusedParameters": true,
+    "removeComments": false,
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "allowJs": true,
+    "experimentalDecorators": true,
+    "isolatedModules": true
   }
 }

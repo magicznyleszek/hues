@@ -19,7 +19,7 @@ jobs:
         run: npm test
 
       - name: Build public files
-        run: npm run build-app
+        run: npm run build
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3

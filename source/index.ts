@@ -1,12 +1,9 @@
-import Vue from "vue";
-import app from "./app.vue";
-import { store } from "./store/store";
+import { createApp } from 'vue'
+import { createPinia } from 'pinia'
+import App from './App.vue'
 
-const myApp = new Vue({
-  components: {
-    app,
-  },
-  el: "#app",
-  render: (h) => h("app"),
-  store,
-});
+const pinia = createPinia()
+const huesApp = createApp(App)
+
+huesApp.use(pinia)
+huesApp.mount('#app')

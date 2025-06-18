@@ -1,103 +1,103 @@
-export const spaces: Map<TSpace, ISpaceDefinition> = new Map([
+export const spaces: Map<Space, SpaceDefinition> = new Map([
   [
-    "hex",
+    'hex',
     {
       parts: [
         {
-          before: "#",
-          partName: "red",
-          partType: "hexadecimal",
+          before: '#',
+          partName: 'red',
+          partType: 'hexadecimal',
           range: [0, 255],
         },
         {
-          partName: "green",
-          partType: "hexadecimal",
+          partName: 'green',
+          partType: 'hexadecimal',
           range: [0, 255],
         },
         {
-          partName: "blue",
-          partType: "hexadecimal",
+          partName: 'blue',
+          partType: 'hexadecimal',
           range: [0, 255],
         },
       ],
     },
   ],
   [
-    "rgb",
+    'rgb',
     {
       parts: [
         {
-          after: ", ",
-          before: "rgb(",
-          partName: "red",
-          partType: "integer",
+          after: ', ',
+          before: 'rgb(',
+          partName: 'red',
+          partType: 'integer',
           range: [0, 255],
         },
         {
-          after: ", ",
-          partName: "green",
-          partType: "integer",
+          after: ', ',
+          partName: 'green',
+          partType: 'integer',
           range: [0, 255],
         },
         {
-          after: ")",
-          partName: "blue",
-          partType: "integer",
+          after: ')',
+          partName: 'blue',
+          partType: 'integer',
           range: [0, 255],
         },
       ],
     },
   ],
   [
-    "hsl",
+    'hsl',
     {
       parts: [
         {
-          after: ", ",
-          before: "hsl(",
-          partName: "hue",
-          partType: "integer",
+          after: ', ',
+          before: 'hsl(',
+          partName: 'hue',
+          partType: 'integer',
           range: [0, 360],
         },
         {
-          after: "%, ",
-          partName: "saturation",
-          partType: "integer",
+          after: '%, ',
+          partName: 'saturation',
+          partType: 'integer',
           range: [0, 100],
         },
         {
-          after: "%)",
-          partName: "lightness",
-          partType: "integer",
+          after: '%)',
+          partName: 'lightness',
+          partType: 'integer',
           range: [0, 100],
         },
       ],
     },
   ],
   [
-    "hwb",
+    'hwb',
     {
       parts: [
         {
-          after: ", ",
-          before: "hwb(",
-          partName: "hue",
-          partType: "integer",
+          after: ', ',
+          before: 'hwb(',
+          partName: 'hue',
+          partType: 'integer',
           range: [0, 360],
         },
         {
-          after: "%, ",
-          partName: "whiteness",
-          partType: "integer",
+          after: '%, ',
+          partName: 'whiteness',
+          partType: 'integer',
           range: [0, 100],
         },
         {
-          after: "%)",
-          partName: "blackness",
-          partType: "integer",
+          after: '%)',
+          partName: 'blackness',
+          partType: 'integer',
           range: [0, 100],
         },
       ],
     },
   ],
-]);
+])

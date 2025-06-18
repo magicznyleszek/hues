@@ -1,8 +1,8 @@
-type TColorValuePart = string | number;
+type ColorValuePart = string | number
 
-interface IColorValue extends Array<any> {
-  0: TSpace;
-  1: TColorValuePart;
-  2: TColorValuePart;
-  3: TColorValuePart;
+interface ColorValue extends Array<Space | ColorValuePart> {
+  0: Space
+  1: ColorValuePart
+  2: ColorValuePart
+  3: ColorValuePart
 }

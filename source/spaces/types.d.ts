@@ -1,25 +1,25 @@
-type TSpace = "hex" | "rgb" | "hsl" | "hwb";
+type Space = 'hex' | 'rgb' | 'hsl' | 'hwb'
 
-interface ISpaceDefinition {
-  parts: ISpacePart[];
+interface SpaceDefinition {
+  parts: SpacePart[]
 }
 
-type TSpacePartName =
-  | "red"
-  | "green"
-  | "blue"
-  | "hue"
-  | "saturation"
-  | "lightness"
-  | "whiteness"
-  | "blackness";
+type SpacePartName =
+  | 'red'
+  | 'green'
+  | 'blue'
+  | 'hue'
+  | 'saturation'
+  | 'lightness'
+  | 'whiteness'
+  | 'blackness'
 
-type TSpacePartType = "hexadecimal" | "integer";
+type SpacePartType = 'hexadecimal' | 'integer'
 
-interface ISpacePart {
-  after?: string;
-  before?: string;
-  partName: TSpacePartName;
-  partType: TSpacePartType;
-  range: number[];
+interface SpacePart {
+  after?: string
+  before?: string
+  partName: SpacePartName
+  partType: SpacePartType
+  range: number[]
 }

@@ -13,22 +13,19 @@ html {
   color: var(--c-shark);
   font-family: var(--font-monospace);
   font-weight: 400;
-  font-size: 100%;
   line-height: var(--root-lineHeight);
   text-rendering: optimizeLegibility;
-}
 
-/*
-clever page scaling with root font size changes:
-https://www.smashingmagazine.com/2016/05/fluid-typography/
-calc(AZ + (B - A) * (100vw - CZ) / (D - C))
-- A: min font size
-- B: max font size
-- C: min screen size
-- D: max screen size
-- Z: unit (px, rem, etc.)
-*/
-html {
+  /*
+  clever page scaling with root font size changes:
+  https://www.smashingmagazine.com/2016/05/fluid-typography/
+  calc(AZ + (B - A) * (100vw - CZ) / (D - C))
+  - A: min font size
+  - B: max font size
+  - C: min screen size
+  - D: max screen size
+  - Z: unit (px, rem, etc.)
+  */
   font-size: calc(1rem + (1.5 - 1) * (100vw - 30rem) / (120 - 30));
 }
 
@@ -46,22 +43,23 @@ user-action influenced states
 a,
 button {
   cursor: pointer;
-  color: var(--c-shady-lady);
+  color: var(--c-dove-gray);
   text-decoration: none;
 }
 
 a:visited {
-  color: var(--c-shady-lady);
+  color: var(--c-dove-gray);
 }
 
 a:hover,
 button:hover {
-  color: var(--c-stack);
+  color: var(--c-shark);
 }
 
 a:active,
 button:active {
-  color: var(--c-dove-gray);
+  background-color: transparent;
+  transform: translateY(1px);
 }
 
 /* selection */
@@ -77,12 +75,12 @@ button:active {
 }
 
 ::placeholder {
-  color: var(--c-shady-lady);
+  color: var(--c-dove-gray);
 }
 
 ::selection {
   color: var(--c-shark);
-  background-color: var(--c-shady-lady);
+  background-color: var(--c-celeste);
 }
 
 /* disabled elements */

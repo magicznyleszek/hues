@@ -1,22 +1,22 @@
-import matcher from "./matcher";
+import matcher from './matcher'
 
-interface IMatcherTest {
-  in: IColorValue;
-  out: IColorMatch;
+interface MatcherTest {
+  in: ColorValue
+  out: ColorMatch
 }
 
-const testCases: IMatcherTest[] = [
+const testCases: MatcherTest[] = [
   // proper ones
   {
-    in: ["rgb", 0, 0, 0],
-    out: { difference: 0, color: ["hsl", 0, 0, 0], name: "Black" },
+    in: ['rgb', 0, 0, 0],
+    out: { difference: 0, color: ['hsl', 0, 0, 0], name: 'Black' },
   },
-];
+]
 
-describe("matcher.formatColor", () => {
+describe('matcher.formatColor', () => {
   testCases.forEach((testCase) => {
     it(`should match color ${testCase.in} to ${testCase.out}`, () => {
-      expect(matcher.matchColor(testCase.in)).toStrictEqual(testCase.out);
-    });
-  });
-});
+      expect(matcher.matchColor(testCase.in)).toStrictEqual(testCase.out)
+    })
+  })
+})
