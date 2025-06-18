@@ -1,10 +1,9 @@
 ## TEAM
 
-Everything: Leszek Pietrzak
-Site: magicznyleszek.xyz
-Email: leszek@magicznyleszek.xyz
+Everything: Zefir Efemera
+Site: zefirefemera.xyz
+Email: zefirefemera@proton.me
 Location: Warsaw, Poland
-
 
 ## THANKS
 
@@ -16,9 +15,8 @@ Glen Maddern: amcss.github.io
 Cole Peters: github.com/colepeters/gemma
 Maxime Thirouin: cssnext.io
 
-
 ## SITE
 
-Last update: 18/05/2014
+Last update: 16/06/2025
 Language: English
-Software: Atom
+Software: Visual Studio Code
