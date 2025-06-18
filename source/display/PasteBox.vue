@@ -49,7 +49,7 @@ export default defineComponent({
 
 input {
   width: 100%;
-  color: var(--c-shady-lady);
+  color: var(--c-dove-gray);
   padding: var(--s-leading-half);
   box-shadow: inset 0 0 0 1px var(--c-celeste);
 }

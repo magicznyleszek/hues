@@ -6,8 +6,6 @@ variables - all global and pallete variables for project
   /* colors palette */
   --c-mercury: hsl(0, 0%, 90%);
   --c-celeste: hsl(0, 0%, 80%);
-  --c-shady-lady: hsl(0, 0%, 65%);
-  --c-stack: hsl(0, 0%, 55%);
   --c-dove-gray: hsl(0, 0%, 45%);
   --c-shark: hsl(0, 0%, 10%);
 

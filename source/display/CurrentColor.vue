@@ -13,12 +13,12 @@
         title="closest match"
       />
       <div class="matched-info">
+        <label>{{ matchedName }}</label>
+        &nbsp;
         <span
           class="distance"
-          title="difference/distance"
-        >&larr;&rarr; {{ matchedDifference }}</span>
-
-        <label>{{ matchedName }}</label>
+          title="distance from current color"
+        >&#8596; {{ matchedDifference }}</span>
       </div>
     </div>
 
@@ -116,12 +116,11 @@ export default defineComponent({
 }
 
 .distance {
-  color: var(--c-shady-lady);
+  color: var(--c-dove-gray);
 }
 
 .matched-info {
   display: flex;
   flex-direction: row;
-  gap: var(--s-leading-half);
 }
 </style>

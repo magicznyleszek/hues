@@ -43,22 +43,23 @@ user-action influenced states
 a,
 button {
   cursor: pointer;
-  color: var(--c-shady-lady);
+  color: var(--c-dove-gray);
   text-decoration: none;
 }
 
 a:visited {
-  color: var(--c-shady-lady);
+  color: var(--c-dove-gray);
 }
 
 a:hover,
 button:hover {
-  color: var(--c-stack);
+  color: var(--c-shark);
 }
 
 a:active,
 button:active {
-  color: var(--c-dove-gray);
+  background-color: transparent;
+  transform: translateY(1px);
 }
 
 /* selection */
@@ -74,12 +75,12 @@ button:active {
 }
 
 ::placeholder {
-  color: var(--c-shady-lady);
+  color: var(--c-dove-gray);
 }
 
 ::selection {
   color: var(--c-shark);
-  background-color: var(--c-shady-lady);
+  background-color: var(--c-celeste);
 }
 
 /* disabled elements */
