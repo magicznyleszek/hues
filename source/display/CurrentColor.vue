@@ -123,7 +123,5 @@ export default defineComponent({
   display: flex;
   flex-direction: row;
   gap: var(--s-leading-half);
-  border-radius: 50%;
-  background: yellow;
 }
 </style>
