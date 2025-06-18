@@ -5,7 +5,7 @@ import stylistic from '@stylistic/eslint-plugin'
 import typescriptEslint from 'typescript-eslint'
 
 export default typescriptEslint.config(
-  { ignores: ['*.d.ts', '**/dist'] },
+  { ignores: ['*.d.ts', '**/public'] },
   {
     extends: [
       stylistic.configs.recommended,
