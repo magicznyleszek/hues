@@ -11,6 +11,4 @@ Thumbs.db
 
 # Parcel
 .parcel-cache
-dev
 public
-dist

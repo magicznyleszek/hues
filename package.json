@@ -37,13 +37,13 @@
     "fix": "npm run fix:styles && npm run fix:scripts",
     "fix:scripts": "npm run lint:scripts -- --fix",
     "fix:styles": "npm run lint:styles -- --fix",
-    "assets:watch": "parcel watch",
-    "assets:build": "parcel build",
-    "test": "jest && npm run test-syntax",
-    "test-watch": "jest --watchAll",
-    "start": "parcel serve --port 2038",
-    "build-app": "rm -rf public && parcel build source/index.html --out-dir public --public-url ./ --no-cache && npm run copy-static-files",
-    "copy-static-files": "cp humans.txt LICENSE manifest.json robots.txt sitemap.xml source/favicons/hues-logo.svg public"
+    "test": "jest",
+    "test:watch": "jest --watchAll",
+    "copy-files": "cp humans.txt LICENSE manifest.json robots.txt sitemap.xml source/favicons/hues-logo.svg public",
+    "parcel:build": "parcel build --dist-dir public --public-url ./ --no-cache",
+    "parcel:serve": "parcel serve --dist-dir public --port 2038",
+    "build": "rm -rf public && parcel build && npm run copy-files",
+    "start": "npm run parcel:serve"
   },
   "devDependencies": {
     "@parcel/transformer-postcss": "^2.15.2",
