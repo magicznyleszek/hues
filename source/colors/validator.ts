@@ -55,7 +55,7 @@ class Validator {
 
   private isRgb(rgb: ColorValue): boolean {
     for (let i = 1; i < rgb.length; i++) {
-      if (typeof rgb[i] === 'number' && !this.isIntInRange(parseInt(String(rgb[i])), 0, 255)) {
+      if (typeof rgb[i] === 'number' && !this.isIntInRange(Number(String(rgb[i])), 0, 255)) {
         return false
       }
     }
