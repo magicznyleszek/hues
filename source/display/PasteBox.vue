@@ -51,7 +51,7 @@ input {
   width: 100%;
   color: var(--c-dove-gray);
   padding: var(--s-leading-half);
-  box-shadow: inset 0 0 0 1px var(--c-celeste);
+  box-shadow: inset 0 0 0 var(--s-global-stroke) var(--c-celeste);
 }
 
 input:not(:placeholder-shown) {

@@ -18,7 +18,7 @@
         <span
           class="distance"
           title="distance from current color"
-        >&#8596; {{ matchedDifference }}</span>
+        >~{{ matchedDifference }}</span>
       </div>
     </div>
 

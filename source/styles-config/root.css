@@ -79,8 +79,8 @@ button:active {
 }
 
 ::selection {
-  color: var(--c-shark);
-  background-color: var(--c-celeste);
+  color: var(--c-mercury);
+  background-color: var(--c-shark);
 }
 
 /* disabled elements */

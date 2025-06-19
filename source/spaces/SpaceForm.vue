@@ -4,15 +4,24 @@
       v-for="(part, index) in parts"
       :key="index"
     >
-      <span v-if="part.before">{{ part.before }}</span>
+      <span
+        v-if="typeof part.before === 'string'"
+        class="part-before"
+      >{{ part.before }}</span>
+
       <space-part
         :part-index="index"
         :part-type="part.partType"
         :range="part.range"
         :space="space"
       />
-      <span v-if="part.after">{{ part.after }}</span>
+
+      <span
+        v-if="typeof part.after === 'string'"
+        class="part-after"
+      >{{ part.after }}</span>
     </div>
+
     <button
       title="copy to clipboard"
       @click="onCopyClick"
@@ -66,5 +75,10 @@ div {
 
 button {
   margin-left: 0.25rem;
+}
+
+.part-before,
+.part-after {
+  white-space: pre;
 }
 </style>
