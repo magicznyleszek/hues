@@ -9,26 +9,10 @@ variables - all global and pallete variables for project
   --c-dove-gray: hsl(0, 0%, 45%);
   --c-shark: hsl(0, 0%, 10%);
 
-  /* font families palette */
-  --font-sansSerif:
-    'Source Sans Pro',
-    'Roboto',
-    'PT Sans',
-    'Droid Sans',
-    'Fira Sans',
-    'Work Sans',
-    'Open Sans',
-    'Noto Sans',
-    'Hind',
-    'Dosis',
-    'Cabin',
-    'Verdana',
-    'Tahoma',
-    sans-serif;
   --font-monospace:
+    'Source Code Pro',
     'Input',
     'Office Code Pro',
-    'Source Code Pro',
     'Fira Mono',
     'Inconsolata',
     'Monaco',
@@ -44,6 +28,5 @@ variables - all global and pallete variables for project
   --s-leading-half: calc(var(--s-leading) * 0.5);
 
   /* globals */
-  --s-global-br: 0.125rem;
-  --s-global-border: 0.125rem;
+  --s-global-stroke: 0.05rem;
 }
