@@ -73,14 +73,22 @@ class ColorIdentifier {
   }
 
   private applyValues(color: ColorValue, text: string): void {
-    // remove space prefix and parens opening
-    text = text.slice(4)
-    // remove parens closing
-    text = text.slice(0, -1)
-    // remove whitespace
-    text = text.replace(/\s/g, '')
+    // replace commas with space (we still handle the old notation, i.e. `rgb(1,2,3)`)
+    text = text.replace(/,/g, ' ')
 
-    text.split(',').forEach((part, index) => {
+    // replace multiple whitespace characters with single one, now we should end up with either `rgb(1 2 3)` or in worst
+    // case scenario `rgb( 1 2 3 )`
+    text = text.replace(/ +/g, ' ')
+
+    // remove space prefix
+    text = text.slice(3)
+    // remove parens opening, taking into account both possible cases
+    text = text.replace('( ', '').replace('(', '')
+
+    // remove parens closing, taking into account both possible cases
+    text = text.replace(' )', '').replace(')', '')
+
+    text.split(' ').forEach((part, index) => {
       if (['hsl', 'hwb'].includes(color[0])) {
         if ([1, 2].includes(index) && part.endsWith('%')) {
           color[index + 1] = parseInt(part.slice(0, -1), 10)

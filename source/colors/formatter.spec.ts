@@ -7,10 +7,10 @@ interface FormatterTest {
 
 const testCases: FormatterTest[] = [
   // proper ones
-  { in: ['rgb', 240, 255, 0], out: 'rgb(240, 255, 0)' },
+  { in: ['rgb', 240, 255, 0], out: 'rgb(240 255 0)' },
   { in: ['hex', 'ff', '00', 'aa'], out: '#ff00aa' },
-  { in: ['hsl', 359, 50, 60], out: 'hsl(359, 50%, 60%)' },
-  { in: ['hwb', 300, 100, 50], out: 'hwb(300, 100%, 50%)' },
+  { in: ['hsl', 359, 50, 60], out: 'hsl(359deg 50% 60%)' },
+  { in: ['hwb', 300, 100, 50], out: 'hwb(300deg 100% 50%)' },
   // wrong ones
   { in: ['hwb', 500, 600, 1000], out: '' },
 ]
@@ -30,11 +30,11 @@ interface FormatterTest2 {
 }
 
 const testCases2: FormatterTest2[] = [
-  { in1: 'Black', in2: ['hsl', 0, 0, 0], out: '--c-black: hsl(0, 0%, 0%);' },
+  { in1: 'Black', in2: ['hsl', 0, 0, 0], out: '--c-black: hsl(0deg 0% 0%);' },
   {
     in1: 'Purple Mountain\'s Majesty',
     in2: ['hsl', 269, 30, 59],
-    out: '--c-purple-mountain-s-majesty: hsl(269, 30%, 59%);',
+    out: '--c-purple-mountain-s-majesty: hsl(269deg 30% 59%);',
   },
 ]
 

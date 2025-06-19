@@ -27,19 +27,19 @@ export const spaces: Map<Space, SpaceDefinition> = new Map([
     {
       parts: [
         {
-          after: ', ',
           before: 'rgb(',
           partName: 'red',
           partType: 'integer',
           range: [0, 255],
         },
         {
-          after: ', ',
+          before: ' ',
           partName: 'green',
           partType: 'integer',
           range: [0, 255],
         },
         {
+          before: ' ',
           after: ')',
           partName: 'blue',
           partType: 'integer',
@@ -53,19 +53,21 @@ export const spaces: Map<Space, SpaceDefinition> = new Map([
     {
       parts: [
         {
-          after: ', ',
           before: 'hsl(',
+          after: 'deg',
           partName: 'hue',
           partType: 'integer',
           range: [0, 360],
         },
         {
-          after: '%, ',
+          before: ' ',
+          after: '%',
           partName: 'saturation',
           partType: 'integer',
           range: [0, 100],
         },
         {
+          before: ' ',
           after: '%)',
           partName: 'lightness',
           partType: 'integer',
@@ -79,19 +81,21 @@ export const spaces: Map<Space, SpaceDefinition> = new Map([
     {
       parts: [
         {
-          after: ', ',
+          after: 'deg',
           before: 'hwb(',
           partName: 'hue',
           partType: 'integer',
           range: [0, 360],
         },
         {
-          after: '%, ',
+          before: ' ',
+          after: '%',
           partName: 'whiteness',
           partType: 'integer',
           range: [0, 100],
         },
         {
+          before: ' ',
           after: '%)',
           partName: 'blackness',
           partType: 'integer',
