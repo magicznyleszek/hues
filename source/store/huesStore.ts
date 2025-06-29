@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import * as packageJsonData from '../../package.json'
+import * as packageJsonData from '../../package.json' with { type: 'json' }
 import converter from '../colors/converter'
 import identifier from '../colors/identifier'
 import matcher from '../dictionary/matcher'

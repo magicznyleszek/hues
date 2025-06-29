@@ -1,4 +1,4 @@
-import * as dictionaryJsonData from './dictionary.json'
+import * as dictionaryJsonData from './dictionary.json' with { type: 'json' }
 const dictionary = dictionaryJsonData as unknown as Dictionary
 
 describe('dictionary', () => {
