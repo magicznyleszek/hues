@@ -12,16 +12,26 @@ class ColorMatcher {
   }
 
   public findColorByName(name: string): Color | undefined {
-    const lowerName = String(name).toLowerCase()
-    const found = dictionary.colors.find(dictionaryColor => String(dictionaryColor[3]).toLowerCase() === lowerName)
-    if (found) {
+    const foundNamed = dictionary.cssNamedColors.find(namedColor => namedColor[0].toLowerCase() === lowerName)
+    if (foundNamed) {
       return {
-        color: ['hsl', found[0], found[1], found[2]],
-        name: found[3],
+        color: ['hex', foundNamed[1].slice(0, 2), foundNamed[1].slice(2, 4), foundNamed[1].slice(4, 6)],
+        name: foundNamed[0],
       }
-    } else {
-      return undefined
     }
+
+    const lowerName = String(name).toLowerCase()
+    const foundDict: DictionaryColor | undefined = dictionary.colors.find(
+      dictionaryColor => String(dictionaryColor[3]).toLowerCase() === lowerName
+    )
+    if (foundDict) {
+      return {
+        color: ['hsl', foundDict[0], foundDict[1], foundDict[2]],
+        name: foundDict[3],
+      }
+    }
+
+    return undefined
   }
 
   private matchDictionaryColor(
