@@ -1,0 +1,10 @@
+name: CI of a PR
+
+on: pull_request
+
+jobs:
+  test-npm:
+    uses: ./.github/workflows/test-npm.yml
+
+  test-jest:
+    uses: ./.github/workflows/test-jest.yml

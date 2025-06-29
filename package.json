@@ -39,7 +39,7 @@
     "fix:styles": "npm run lint:styles -- --fix",
     "test": "jest",
     "test:watch": "jest --watchAll",
-    "copy-files": "cp humans.txt LICENSE manifest.json robots.txt sitemap.xml source/favicons/hues-logo.svg public",
+    "copy-files": "cp humans.txt CNAME LICENSE manifest.json robots.txt sitemap.xml source/favicons/hues-logo.svg public",
     "parcel:build": "parcel build --dist-dir public --public-url ./ --no-cache",
     "parcel:serve": "parcel serve --dist-dir public --port 2038",
     "build": "rm -rf public && parcel build && npm run copy-files",
