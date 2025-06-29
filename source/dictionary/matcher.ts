@@ -12,6 +12,8 @@ class ColorMatcher {
   }
 
   public findColorByName(name: string): Color | undefined {
+    const lowerName = String(name).toLowerCase()
+
     const foundNamed = dictionary.cssNamedColors.find(namedColor => namedColor[0].toLowerCase() === lowerName)
     if (foundNamed) {
       return {
@@ -20,7 +22,6 @@ class ColorMatcher {
       }
     }
 
-    const lowerName = String(name).toLowerCase()
     const foundDict: DictionaryColor | undefined = dictionary.colors.find(
       dictionaryColor => String(dictionaryColor[3]).toLowerCase() === lowerName
     )
