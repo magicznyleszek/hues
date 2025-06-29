@@ -3,7 +3,9 @@ declare module '*.vue' {
   export default Vue
 }
 
+export type Json = Json[] | boolean | number | string | { [key: string]: Json } | null
+
 declare module '*.json' {
-  const value: any
+  const value: Json
   export default value
 }
