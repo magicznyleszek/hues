@@ -12,7 +12,9 @@ const testCases = [
   { in: 'hwb(300,100%,50%)', out: ['hwb', 300, 100, 50] },
   { in: 'hwb(300 100% 50%)', out: ['hwb', 300, 100, 50] },
   { in: 'hwb(300deg 100% 50%)', out: ['hwb', 300, 100, 50] },
-  { in: 'Black', out: ['hsl', 0, 0, 0] },
+  // Named CSS color
+  { in: 'Black', out: ['hex', '00', '00', '00'] },
+  // Dictionary colors (they use HSL)
   { in: 'Sapphire', out: ['hsl', 222, 54, 40] },
   { in: 'Rebecca Purple', out: ['hsl', 270, 50, 40] },
   // hex without "#" prefix can be still identified
